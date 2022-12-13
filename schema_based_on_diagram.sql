@@ -46,3 +46,18 @@ create table invoice (
 	medical_history_id int,
   FOREIGN KEY (medical_history_id) REFERENCES medical_histories(id)
 )
+
+
+-- indexes
+
+CREATE INDEX medical_history_index
+ON medical_histories (patient_id);
+
+CREATE INDEX history_treatments_index
+ON history_treatments (mh_id, treatments_id);
+
+CREATE INDEX invoice_items_index
+ON invoice_items (invoice_id, treatment_id);
+
+CREATE INDEX invoice_index
+ON invoice (medical_history_id);
